@@ -24,6 +24,7 @@ export function getCommonConfig(wco: WebpackConfigOptions) {
 
   const appRoot = path.resolve(projectRoot, appConfig.root);
   const nodeModules = path.resolve(projectRoot, 'node_modules');
+  const target = appConfig.target || "web";
 
   let extraPlugins: any[] = [];
   let extraRules: any[] = [];
@@ -96,6 +97,7 @@ export function getCommonConfig(wco: WebpackConfigOptions) {
     plugins: [
       new webpack.NoEmitOnErrorsPlugin()
     ].concat(extraPlugins),
+    target: target,
     node: {
       fs: 'empty',
       global: true,
